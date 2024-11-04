@@ -119,6 +119,18 @@
                   everything, including creating categories, posts, and comments,
                   as well as deleting users and more.</li>
               </ul>
+
+              <h6>Testing account admin</h6>
+              <ul>
+                <li><strong>Email: </strong>admin@gmail.com</li>
+                <li><strong>Password: </strong>admin</li>
+              </ul>
+
+              <h6>Testing account user</h6>
+              <ul>
+                <li><strong>Email: </strong>user@gmail.com</li>
+                <li><strong>Password: </strong>user</li>
+              </ul>
             </div>
           </div>
 
