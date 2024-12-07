@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ContactController;
+use App\Mail\SendEmail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,4 +31,9 @@ Route::prefix('project')->group(function () {
     Route::get('/landing-page-nft', fn() => view('pages.project-details.landing-page-nft'));
     Route::get('/login-management', fn() => view('pages.project-details.login-management'));
     Route::get('/module-app', fn() => view('pages.project-details.module-app'));
+    Route::get('/irkaexpress', fn() => view('pages.project-details.irka-express'));
 });
+
+Route::get('admin', fn() => view('pages.admin-panel.index'));
+
+Route::post('/send-email', [ContactController::class, 'sendEmail']);

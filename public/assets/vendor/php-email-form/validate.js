@@ -53,11 +53,14 @@
     fetch(action, {
       method: 'POST',
       body: formData,
-      headers: {'X-Requested-With': 'XMLHttpRequest'}
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest', 
+        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+      }
     })
     .then(response => {
       if( response.ok ) {
-        return response.text();
+        return response.statusText;
       } else {
         throw new Error(`${response.status} ${response.statusText} ${response.url}`); 
       }
