@@ -27,11 +27,13 @@ Route::get('/resume', fn() => view('pages.resume'));
 Route::prefix('project')->group(function () {
     Route::get('/blog-app', fn() => view('pages.project-details.blog-app'));
     Route::get('/larest-admin', fn() => view('pages.project-details.larest-admin'));
+    Route::get('/larest-v2', fn() => view('pages.project-details.larest-v2'));
     Route::get('/larest-client', fn() => view('pages.project-details.larest-client'));
     Route::get('/landing-page-nft', fn() => view('pages.project-details.landing-page-nft'));
     Route::get('/login-management', fn() => view('pages.project-details.login-management'));
     Route::get('/module-app', fn() => view('pages.project-details.module-app'));
     Route::get('/irkaexpress', fn() => view('pages.project-details.irka-express'));
+    Route::get('/point-of-sale', fn() => view('pages.project-details.point-of-sale'));
 });
 
 Route::get('admin', fn() => view('pages.admin-panel.index'));

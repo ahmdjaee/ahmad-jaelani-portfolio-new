@@ -39,6 +39,7 @@
             data-aos-delay="100">
             <li data-filter="*" class="filter-active">All</li>
             <li data-filter=".filter-app">App</li>
+            <li data-filter=".filter-app-ongoing">App (Ongoing)</li>
             <li data-filter=".filter-design">Design</li>
             <li data-filter=".filter-freelance">Freelance</li>
           </ul><!-- End Portfolio Filters -->
@@ -77,9 +78,43 @@
                   <a href="/project/blog-app" title="More Details"
                     class="details-link"><i class="bi bi-link-45deg"></i></a>
                 </div>
-              </div>
+              </div>  
             </div><!-- End Portfolio Item -->
 
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-freelance filter-app-ongoing">
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/pos.jpg"
+                  class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>Point Of Sale</h4>
+                  {{-- <p>Lorem ipsum, dolor sit amet consectetur</p> --}}
+                  <a href="assets/img/portfolio/pos.jpg" title="Point Of Sale"
+                    data-gallery="portfolio-gallery-app"
+                    class="glightbox preview-link"><i
+                      class="bi bi-zoom-in"></i></a>
+                  <a href="/project/point-of-sale" title="More Details"
+                    class="details-link"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>  
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app-ongoing">
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/larest-v2.png"
+                  class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>Larest V2 (Rewrite)</h4>
+                  {{-- <p>Lorem ipsum, dolor sit amet consectetur</p> --}}
+                  <a href="assets/img/portfolio/larest-v2.png" title="Larest V2 (Rewrite)"
+                    data-gallery="portfolio-gallery-app"
+                    class="glightbox preview-link"><i
+                      class="bi bi-zoom-in"></i></a>
+                  <a href="/project/larest-v2" title="More Details"
+                    class="details-link"><i class="bi bi-link-45deg"></i></a>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+            
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-design">
               <div class="portfolio-content h-100">
                 <img src="assets/img/portfolio/thumbnail-design-1.png"
