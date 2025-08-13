@@ -56,7 +56,7 @@
             <div class="swiper-wrapper align-items-center">
               @foreach ($images as $image)
                 <div class="swiper-slide">
-                  <img style="max-height: 500px; object-fit: contain;" src={{ asset($image) }} alt="">
+                  <img style="max-height: 500px; object-fit: contain;" src={{ asset($image->url) }} alt="">
                 </div>
               @endforeach
             </div>

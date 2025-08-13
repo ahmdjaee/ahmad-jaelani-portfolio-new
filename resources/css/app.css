@@ -1,0 +1,6 @@
+.form-control:focus{
+    color: white;
+}
+select.form-control{
+    color: white;
+}

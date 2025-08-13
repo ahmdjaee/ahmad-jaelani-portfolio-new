@@ -35,7 +35,7 @@
   <!-- Main CSS File -->
   <link href={{ asset("assets/css/main.css") }} rel="stylesheet">
 
-  {{-- @vite(["resources/css/app.css", "resources/js/app.js"]) --}}
+  @vite(["resources/css/app.css", "resources/js/app.js"])
 
   <!-- =======================================================
   * Template Name: Personal
