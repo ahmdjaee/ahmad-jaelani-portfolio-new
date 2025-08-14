@@ -123,7 +123,7 @@
           'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode',
           'advtemplate', 'ai', 'uploadcare', 'mentions', 'tinycomments', 'tableofcontents',
           'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown',
-          'importword', 'exportword', 'exportpdf'
+          'importword', 'exportword', 'exportpdf', 'code'
         ],
         toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography uploadcare | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
         tinycomments_mode: 'embedded',
@@ -150,6 +150,8 @@
             @this.set('form.project_information', editor.getContent());
           });
         },
+        content_css: "dark",
+        skin: "oxide-dark",
       });
     }
 
@@ -166,7 +168,7 @@
           'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode',
           'advtemplate', 'ai', 'uploadcare', 'mentions', 'tinycomments', 'tableofcontents',
           'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown',
-          'importword', 'exportword', 'exportpdf'
+          'importword', 'exportword', 'exportpdf', 'code'
         ],
         toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography uploadcare | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
         tinycomments_mode: 'embedded',
@@ -193,6 +195,8 @@
             @this.set('form.detail_features', editor.getContent());
           });
         },
+        content_css: "dark",
+        skin: "oxide-dark",
       });
     }
   </script>

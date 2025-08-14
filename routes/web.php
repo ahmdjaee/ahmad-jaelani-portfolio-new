@@ -27,11 +27,11 @@ Route::middleware('auth')->group(function () {
     Route::redirect('/admin-panel', '/admin-panel/project', 301);
     Route::get('/admin-panel/project', Index::class)->name('admin');
     Route::get('/admin-panel/project/create', Create::class)->name('admin.project.create');
-    Route::get('/admin-panel/project/{id}edit', Edit::class)->name('admin.project.edit');
+    Route::get('/admin-panel/project/{id}/edit', Edit::class)->name('admin.project.edit');
 });
 
 Route::get('/admin-panel/login', [LoginController::class, 'index'])->name('login');
-Route::post('/admin-panel/login', [LoginController::class, 'store'])->name('login');
+Route::post('/admin-panel/login', [LoginController::class, 'store'])->name('login.store');
 Route::get('/admin-panel/logout', [LoginController::class, 'logout'])->name('logout');
 
 

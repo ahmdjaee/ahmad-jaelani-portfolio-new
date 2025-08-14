@@ -26,10 +26,10 @@
       </div>
 
       <div class="form-group">
-        <label for="exampleSelectCategory">Category</label>
+        <label >Category</label>
         <select
           class="form-control"
-          id="exampleSelectCategory"
+         
           wire:model="form.category"
         >
           <option value="app">App</option>
@@ -39,10 +39,10 @@
         </select>
       </div>
       <div class="form-group">
-        <label for="exampleSelectCategory">The Best</label>
+        <label >The Best</label>
         <select
           class="form-control"
-          id="exampleSelectCategory"
+         
           wire:model="form.is_best"
         >
           <option value="0">False</option>
@@ -115,7 +115,7 @@
           'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode',
           'advtemplate', 'ai', 'uploadcare', 'mentions', 'tinycomments', 'tableofcontents',
           'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown',
-          'importword', 'exportword', 'exportpdf'
+          'importword', 'exportword', 'exportpdf', 'code'
         ],
         toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography uploadcare | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
         tinycomments_mode: 'embedded',
@@ -142,6 +142,8 @@
             @this.set('form.project_information', editor.getContent());
           });
         },
+        content_css: "dark",
+        skin: "oxide-dark",
       });
     }
 
@@ -158,7 +160,7 @@
           'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode',
           'advtemplate', 'ai', 'uploadcare', 'mentions', 'tinycomments', 'tableofcontents',
           'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown',
-          'importword', 'exportword', 'exportpdf'
+          'importword', 'exportword', 'exportpdf', 'code'
         ],
         toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography uploadcare | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
         tinycomments_mode: 'embedded',
@@ -182,9 +184,11 @@
 
           // This section says that when you leave the text edit area, it will set whatever livewire variable you like to the currnt contents
           editor.on('blur', function(e) {
-            @this.set('form.detail_features', editor.getContent());
+            @this.set('form.project_information', editor.getContent());
           });
         },
+        content_css: "dark",
+        skin: "oxide-dark",
       });
     }
   </script>

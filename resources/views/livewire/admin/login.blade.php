@@ -22,7 +22,7 @@
                 <div class="alert alert-primary">{{ session('message') }}</div>
               @endif
               <h3 class="card-title text-left mb-3">Login</h3>
-              <form action="{{ route('login') }}" method="POST">
+              <form action="{{ route('login.store') }}" method="POST">
                 @csrf
                 <div class="form-group">
                   <label>Username or email *</label>

@@ -13,19 +13,7 @@
   >
   <link href="{{ asset('admin/assets/vendors/css/vendor.bundle.base.css') }}" rel="stylesheet">
   <!-- endinject -->
-  <!-- Plugin css for this page -->
-  <link href="{{ asset('admin/assets/vendors/jvectormap/jquery-jvectormap.css') }}"
-    rel="stylesheet">
-  <link href="{{ asset('admin/assets/vendors/flag-icon-css/css/flag-icon.min.css') }}"
-    rel="stylesheet"
-  >
-  <link href="{{ asset('admin/assets/vendors/owl-carousel-2/owl.carousel.min.css') }}"
-    rel="stylesheet"
-  >
-  <link href="{{ asset('admin/assets/vendors/owl-carousel-2/owl.theme.default.min.css') }}"
-    rel="stylesheet"
-  >
-  <!-- End plugin css for this page -->
+
   <!-- inject:css -->
   <!-- endinject -->
   <!-- Layout styles -->
@@ -105,32 +93,21 @@
   <!-- plugins:js -->
   <script src="{{ asset('admin/assets/vendors/js/vendor.bundle.base.js') }}"></script>
   <!-- endinject -->
-  <!-- Plugin js for this page -->
-  <script src="{{ asset('admin/assets/vendors/chart.js/Chart.min.js') }}"></script>
-  <script src="{{ asset('admin/assets/vendors/progressbar.js/progressbar.min.js') }}"></script>
-  <script src="{{ asset('admin/assets/vendors/jvectormap/jquery-jvectormap.min.js') }}"></script>
-  <script src="{{ asset('admin/assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js') }}">
-  </script>
-  <script src="{{ asset('admin/assets/vendors/owl-carousel-2/owl.carousel.min.js') }}"></script>
-  <!-- End plugin js for this page -->
   <!-- inject:js -->
   <script src="{{ asset('admin/assets/js/off-canvas.js') }}"></script>
   <script src="{{ asset('admin/assets/js/hoverable-collapse.js') }}"></script>
-  <script src="{{ asset('admin/assets/js/misc.js') }}"></script>
-  <script src="{{ asset('admin/assets/js/settings.js') }}"></script>
-  <script src="{{ asset('admin/assets/js/todolist.js') }}"></script>
   <!-- endinject -->
   <!-- Custom js for this page -->
-  <script src="{{ asset('admin/assets/js/dashboard.js') }}"></script>
   <script
     src="https://cdn.tiny.cloud/1/5szika0mnl706vrd6zx6a9rui1g2yjbklt9d7lwb3rdm2uau/tinymce/8/tinymce.min.js"
     referrerpolicy="origin"
     crossorigin="anonymous"
   ></script>
 
+  @filepondScripts
   <!-- End custom js for this page -->
   @stack('bottom-script')
-  @filepondScripts
+  {{-- <script type="module" src="{{asset('admin/assets/vendors/filepond/dist/filepond.js')}}" data-navigate-once defer data-navigate-track></script> --}}
   @livewireScripts
 
 </body>

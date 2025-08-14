@@ -1,6 +1,6 @@
-@extends("layouts.app")
+@extends('layouts.app')
 
-@section("content")
+@section('content')
   <main class="main">
 
     <!-- Page Title -->
@@ -28,18 +28,42 @@
     </div><!-- End Page Title -->
 
     <!-- Resume Section -->
-    <section id="resume" class="resume section">
+    <section class="resume section" id="resume">
 
       <div class="container">
 
         <div class="row">
 
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+          <div
+            class="col-lg-6"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
             <h3 class="resume-title">Professional Experience</h3>
+
+            <div class="resume-item">
+              <h4>Freelance web or design</h4>
+              <h5>Jul-2025 - Present</h5>
+              {{-- <p><em>Steak Holic</em></p> --}}
+
+              {{-- <p>The experience is not displayed because I consider it less
+                  relevant.</p> --}}
+            </div><!-- Edn Resume Item -->
+            
+            <div class="resume-item">
+              <h4>Cashier, Bartender</h4>
+              <h5>Feb -2025 - Jul-2025</h5>
+              <p><em>Steak Holic</em></p>
+
+              <p>The experience is not displayed because I consider it less
+                  relevant.</p>
+            </div><!-- Edn Resume Item -->
 
             <div class="resume-item">
               <h4>Mobile Developer Intern</h4>
               <h5>Oct-2023 - Jan-2024</h5>
+              <p><em>PT Qtera Mandiri</em></p>
+
               <ul>
                 <li>Implementation of Figma designs into a mobile application</li>
                 <li> Developed user interface components</li>
@@ -58,22 +82,28 @@
             <div class="resume-item">
               <h4>Technician Project</h4>
               <h5>Jun-2021 - Aug-2022</h5>
-              <p><em>The experience is not displayed because I consider it less
-                  relevant.</em></p>
+              <p><em>PT Heinz ABC Indonesia</em></p>
+
+              <p>The experience is not displayed because I consider it less
+                  relevant.</p>
             </div><!-- Edn Resume Item -->
 
             <div class="resume-item pb-0">
               <h4>Maintenance Support</h4>
               <h5>Nov-2018 - Mar-2020</h5>
-              <p><em>The experience is not displayed because I consider it less
-                  relevant.</em></p>
-            </div><!-- Edn Resume Item -->
+              <p><em>PT Funworld Prima</em></p>
 
-           
+              <p>The experience is not displayed because I consider it less
+                  relevant.</p>
+            </div><!-- Edn Resume Item -->
 
           </div>
 
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+          <div
+            class="col-lg-6"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
             <h3 class="resume-title">Formal Education</h3>
             <div class="resume-item">
               <h4>S1 Information Systems</h4>
@@ -98,15 +128,16 @@
               <h5>Feb-2023 - Sep-2023</h5>
               <p><em>Kemnaker Bekasi, Indonesia</em></p>
               <p>
-                Here, I learned Kotlin from basics to advanced levels and successfully developed a modular app project, which led to my graduation.</p>
+                Here, I learned Kotlin from basics to advanced levels and successfully developed a
+                modular app project, which led to my graduation.</p>
             </div><!-- Edn Resume Item -->
 
             <div class="resume-item">
               <h4>Embbedded Systems</h4>
               <h5>Apr-2021 - Jun-2021</h5>
               <p><em>Kemnaker Bekasi, Indonesia</em></p>
-              <p><em>The experience is not displayed because I consider it less
-                relevant.</em></p>
+              <p>The experience is not displayed because I consider it less
+                  relevant.</p>
             </div><!-- Edn Resume Item -->
 
           </div>
