@@ -1,17 +1,18 @@
 .form-control:focus {
-    color: white;
+    color: white !important;
 }
+
 select.form-control {
-    color: white;
+    color: white !important;
 }
 
 .filepond--drop-label {
-    background-color: #2a3038;
+    background-color: #2a3038 !important;
     color: #ffffff !important;
 }
 
 .form-group {
-    margin-bottom: 2rem;
+    margin-bottom: 2rem !important;
 }
 
 .filepond--drip {

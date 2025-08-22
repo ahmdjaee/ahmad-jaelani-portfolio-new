@@ -9,6 +9,7 @@ use App\Livewire\Admin\Project\Edit;
 use App\Livewire\Admin\Project\Index;
 use App\Mail\SendEmail;
 use App\Models\Project;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
@@ -50,3 +51,19 @@ Route::prefix('project')->group(function () {
 
 
 Route::post('/send-email', [ContactController::class, 'sendEmail']);
+
+Route::get('/framework-optimize', function () {
+    Artisan::call('optimize', );
+
+    info('Optimize done!');
+
+    return redirect(route('project.index'));
+});
+
+Route::get('/framework-optimize-clear', function () {
+    Artisan::call('optimize:clear', );
+
+    info('Optimize clear done!');
+
+    return redirect(route('project.index'));
+});
