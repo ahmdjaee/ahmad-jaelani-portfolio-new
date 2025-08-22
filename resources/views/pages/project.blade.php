@@ -100,7 +100,7 @@
                     <a
                       class="glightbox preview-link"
                       data-gallery="portfolio-gallery-app"
-                      href="assets/img/portfolio/details/irkaexpress-1.png"
+                      href="{{ asset($project->thumbnail) }}"
                       title="{{ $project->name }}"
                     ><i class="bi bi-zoom-in"></i></a>
                     <a
