@@ -94,7 +94,7 @@
 
 @push('bottom-script')
   <script>
-    ['livewire:load', 'livewire:navigated'].forEach(evt =>
+    ['livewire:load', 'livewire:navigated', 'DOMContentLoaded'].forEach(evt =>
       document.addEventListener(evt, function() {
         initTinyProject();
         initTinyDetail();
@@ -184,7 +184,7 @@
 
           // This section says that when you leave the text edit area, it will set whatever livewire variable you like to the currnt contents
           editor.on('blur', function(e) {
-            @this.set('form.project_information', editor.getContent());
+            @this.set('form.detail_features', editor.getContent());
           });
         },
         content_css: "dark",
