@@ -7,7 +7,6 @@
           class="nav-link btn btn-success create-new-button"
           href="{{ route('admin.project.create') }}"
           aria-expanded="false"
-          wire:navigate
         >+ Create New Project</a>
       </div>
     </div>
@@ -66,7 +65,6 @@
                   class="btn text-warning btn-icon-text"
                   type="button"
                   href="{{ route('admin.project.edit', $project->id) }}"
-                  wire:navigate
                 > Edit
                   <i class="mdi mdi-pen btn-icon-append"></i>
                 </a>

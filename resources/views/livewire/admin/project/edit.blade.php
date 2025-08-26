@@ -26,12 +26,8 @@
       </div>
 
       <div class="form-group">
-        <label >Category</label>
-        <select
-          class="form-control"
-         
-          wire:model="form.category"
-        >
+        <label>Category</label>
+        <select class="form-control" wire:model="form.category">
           <option value="app">App</option>
           <option value="app-ongoing">App (Ongoing)</option>
           <option value="design">Design</option>
@@ -39,12 +35,8 @@
         </select>
       </div>
       <div class="form-group">
-        <label >The Best</label>
-        <select
-          class="form-control"
-         
-          wire:model="form.is_best"
-        >
+        <label>The Best</label>
+        <select class="form-control" wire:model="form.is_best">
           <option value="0">False</option>
           <option value="1">True</option>
         </select>
@@ -94,6 +86,9 @@
 
 @push('bottom-script')
   <script>
+    const useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const isSmallScreen = window.matchMedia('(max-width: 1023.5px)').matches;
+
     ['livewire:load', 'livewire:navigated', 'DOMContentLoaded'].forEach(evt =>
       document.addEventListener(evt, function() {
         initTinyProject();
@@ -105,33 +100,75 @@
     function initTinyProject() {
       tinymce.init({
         selector: '#projectInformation',
-        plugins: [
-          // Core editing features
-          'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'link', 'lists', 'media',
-          'searchreplace', 'table', 'visualblocks', 'wordcount',
-          // Your account includes a free trial of TinyMCE premium features
-          // Try the most popular premium features until Aug 25, 2025:
-          'checklist', 'mediaembed', 'casechange', 'formatpainter', 'pageembed', 'a11ychecker',
-          'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode',
-          'advtemplate', 'ai', 'uploadcare', 'mentions', 'tinycomments', 'tableofcontents',
-          'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown',
-          'importword', 'exportword', 'exportpdf', 'code'
-        ],
-        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography uploadcare | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-        tinycomments_mode: 'embedded',
-        tinycomments_author: 'Author name',
-        mergetags_list: [{
-            value: 'First.Name',
-            title: 'First Name'
-          },
-          {
-            value: 'Email',
-            title: 'Email'
-          },
-        ],
-        ai_request: (request, respondWith) => respondWith.string(() => Promise.reject(
-          'See docs to implement AI Assistant')),
-        uploadcare_public_key: '1d85ba9c1c4c6e34294b',
+        license_key: 'gpl',
+        plugins: 'preview importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount help charmap quickbars emoticons accordion',
+        editimage_cors_hosts: ['picsum.photos'],
+        menubar: 'file edit view insert format tools table help',
+        toolbar: "undo redo | accordion accordionremove | blocks fontfamily fontsize | bold italic underline strikethrough | align numlist bullist | link image | table media | lineheight outdent indent| forecolor backcolor removeformat | charmap emoticons | code fullscreen preview | save print | pagebreak anchor codesample | ltr rtl",
+        autosave_ask_before_unload: true,
+        autosave_interval: '30s',
+        autosave_prefix: '{path}{query}-{id}-',
+        autosave_restore_when_empty: false,
+        autosave_retention: '2m',
+        image_advtab: true,
+        
+        importcss_append: true,
+        file_picker_callback: (callback, value, meta) => {
+          /* Provide file and text for the link dialog */
+          if (meta.filetype === 'file') {
+            callback('https://www.google.com/logos/google.jpg', {
+              text: 'My text'
+            });
+          }
+
+          /* Provide image and alt text for the image dialog */
+          if (meta.filetype === 'image') {
+            const input = document.createElement('input');
+            input.setAttribute('type', 'file');
+            input.setAttribute('accept', 'image/*');
+
+            input.addEventListener('change', (e) => {
+              const file = e.target.files[0];
+
+              const reader = new FileReader();
+              reader.addEventListener('load', () => {
+                /*
+                  Note: Now we need to register the blob in TinyMCEs image blob
+                  registry. In the next release this part hopefully won't be
+                  necessary, as we are looking to handle it internally.
+                */
+                const id = 'blobid' + (new Date()).getTime();
+                const blobCache = tinymce.activeEditor.editorUpload.blobCache;
+                const base64 = reader.result.split(',')[1];
+                const blobInfo = blobCache.create(id, file, base64);
+                blobCache.add(blobInfo);
+
+                /* call the callback and populate the Title field with the file name */
+                callback(blobInfo.blobUri(), {
+                  title: file.name
+                });
+              });
+              reader.readAsDataURL(file);
+            });
+
+            input.click();
+          }
+
+          /* Provide alternative source and posted for the media dialog */
+          if (meta.filetype === 'media') {
+            callback('movie.mp4', {
+              source2: 'alt.ogg',
+              poster: 'https://www.google.com/logos/google.jpg'
+            });
+          }
+        },
+        image_caption: true,
+        quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
+        noneditable_class: 'mceNonEditable',
+        toolbar_mode: 'sliding',
+        contextmenu: 'link image table',
+        skin: useDarkMode ? 'oxide-dark' : 'oxide',
+        content_css: useDarkMode ? 'dark' : 'default',
         setup: function(editor) {
           editor.on('init change', function() {
             editor.save();
@@ -142,41 +179,82 @@
             @this.set('form.project_information', editor.getContent());
           });
         },
-        content_css: "dark",
-        skin: "oxide-dark",
       });
     }
 
     function initTinyDetail() {
       tinymce.init({
         selector: '#detailFeatures',
-        plugins: [
-          // Core editing features
-          'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'link', 'lists', 'media',
-          'searchreplace', 'table', 'visualblocks', 'wordcount',
-          // Your account includes a free trial of TinyMCE premium features
-          // Try the most popular premium features until Aug 25, 2025:
-          'checklist', 'mediaembed', 'casechange', 'formatpainter', 'pageembed', 'a11ychecker',
-          'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode',
-          'advtemplate', 'ai', 'uploadcare', 'mentions', 'tinycomments', 'tableofcontents',
-          'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown',
-          'importword', 'exportword', 'exportpdf', 'code'
-        ],
-        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography uploadcare | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-        tinycomments_mode: 'embedded',
-        tinycomments_author: 'Author name',
-        mergetags_list: [{
-            value: 'First.Name',
-            title: 'First Name'
-          },
-          {
-            value: 'Email',
-            title: 'Email'
-          },
-        ],
-        ai_request: (request, respondWith) => respondWith.string(() => Promise.reject(
-          'See docs to implement AI Assistant')),
-        uploadcare_public_key: '1d85ba9c1c4c6e34294b',
+        license_key: 'gpl',
+        plugins: 'preview importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount help charmap quickbars emoticons accordion',
+        editimage_cors_hosts: ['picsum.photos'],
+        menubar: 'file edit view insert format tools table help',
+        toolbar: "undo redo | accordion accordionremove | blocks fontfamily fontsize | bold italic underline strikethrough | align numlist bullist | link image | table media | lineheight outdent indent| forecolor backcolor removeformat | charmap emoticons | code fullscreen preview | save print | pagebreak anchor codesample | ltr rtl",
+        autosave_ask_before_unload: true,
+        autosave_interval: '30s',
+        autosave_prefix: '{path}{query}-{id}-',
+        autosave_restore_when_empty: false,
+        autosave_retention: '2m',
+        image_advtab: true,
+        
+        importcss_append: true,
+        file_picker_callback: (callback, value, meta) => {
+          /* Provide file and text for the link dialog */
+          if (meta.filetype === 'file') {
+            callback('https://www.google.com/logos/google.jpg', {
+              text: 'My text'
+            });
+          }
+
+          /* Provide image and alt text for the image dialog */
+          if (meta.filetype === 'image') {
+            const input = document.createElement('input');
+            input.setAttribute('type', 'file');
+            input.setAttribute('accept', 'image/*');
+
+            input.addEventListener('change', (e) => {
+              const file = e.target.files[0];
+
+              const reader = new FileReader();
+              reader.addEventListener('load', () => {
+                /*
+                  Note: Now we need to register the blob in TinyMCEs image blob
+                  registry. In the next release this part hopefully won't be
+                  necessary, as we are looking to handle it internally.
+                */
+                const id = 'blobid' + (new Date()).getTime();
+                const blobCache = tinymce.activeEditor.editorUpload.blobCache;
+                const base64 = reader.result.split(',')[1];
+                const blobInfo = blobCache.create(id, file, base64);
+                blobCache.add(blobInfo);
+
+                /* call the callback and populate the Title field with the file name */
+                callback(blobInfo.blobUri(), {
+                  title: file.name
+                });
+              });
+              reader.readAsDataURL(file);
+            });
+
+            input.click();
+          }
+
+          /* Provide alternative source and posted for the media dialog */
+          if (meta.filetype === 'media') {
+            callback('movie.mp4', {
+              source2: 'alt.ogg',
+              poster: 'https://www.google.com/logos/google.jpg'
+            });
+          }
+        },
+        height: 600,
+        image_caption: true,
+        quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
+        noneditable_class: 'mceNonEditable',
+        toolbar_mode: 'sliding',
+        contextmenu: 'link image table',
+        skin: useDarkMode ? 'oxide-dark' : 'oxide',
+        content_css: useDarkMode ? 'dark' : 'default',
         setup: function(editor) {
           editor.on('init change', function() {
             editor.save();
@@ -187,8 +265,6 @@
             @this.set('form.detail_features', editor.getContent());
           });
         },
-        content_css: "dark",
-        skin: "oxide-dark",
       });
     }
   </script>

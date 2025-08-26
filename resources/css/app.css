@@ -19,3 +19,7 @@ select.form-control {
     background-color: #2a3038 !important;
     opacity: 1 !important;
 }
+
+.tox-promotion {
+    display: none;
+}
