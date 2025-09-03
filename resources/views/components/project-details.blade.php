@@ -17,7 +17,8 @@
       <div class="container">
         <ol>
           <li><a href="/">Home</a></li>
-          <li class="current">Portfolio Details</li>
+          <li><a href="/project">Project</a></li>
+          <li class="current">Details</li>
         </ol>
       </div>
     </nav>

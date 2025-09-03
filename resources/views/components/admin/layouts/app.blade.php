@@ -98,7 +98,8 @@
   <script src="{{ asset('admin/assets/js/hoverable-collapse.js') }}"></script>
   <!-- endinject -->
   <!-- Custom js for this page -->
-<script src="{{ asset('assets/vendor/tinymce/tinymce.min.js') }}" referrerpolicy="origin" crossorigin="anonymous"></script>
+  <script src="{{ asset('assets/vendor/tinymce/tinymce.min.js') }}" referrerpolicy="origin" crossorigin="anonymous"></script>
+  
   @filepondScripts
   <!-- End custom js for this page -->
   @stack('bottom-script')

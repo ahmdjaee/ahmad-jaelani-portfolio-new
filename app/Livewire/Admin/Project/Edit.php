@@ -5,6 +5,7 @@ namespace App\Livewire\Admin\Project;
 use App\Livewire\Forms\ProjectForm;
 use App\Models\Image;
 use App\Models\Project;
+use Illuminate\Http\Request;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -16,11 +17,10 @@ class Edit extends Component
 
     public ProjectForm $form;
     public $project;
-    public $id;
 
-    public function mount()
+    public function mount(Request $request)
     {
-        $project = Project::with('images')->findOrFail($this->id);
+        $project = Project::with('images')->findOrFail($request->id);
         $this->form->setProject($project);
     }
 

@@ -10,12 +10,20 @@
           <li class="nav-item nav-category">
             <span class="nav-link">Navigation</span>
           </li>
-          <li class="nav-item menu-items">
+          <li class="nav-item menu-items {{ request()->is('admin-panel/project*') ? 'active' : '' }}">
             <a class="nav-link" href="{{route('admin')}}" wire:navigate>
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
               </span>
               <span class="menu-title">Project</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items {{ request()->is('admin-panel/blog*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{route('admin.blogs')}}" wire:navigate>
+              <span class="menu-icon">
+                <i class="mdi mdi-blogger"></i>
+              </span>
+              <span class="menu-title">Blogs</span> 
             </a>
           </li>
         </ul>

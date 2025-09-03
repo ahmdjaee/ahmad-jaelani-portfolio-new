@@ -1,13 +1,13 @@
 <div class="card">
   <div class="card-body">
     <div class="d-flex flex-row justify-content-between">
-      <h4 class="card-title">Project</h4>
+      <h4 class="card-title">Blogs</h4>
       <div class="card-actions">
         <a
           class="nav-link btn btn-success create-new-button"
-          href="{{ route('admin.project.create') }}"
+          href="{{ route('admin.blogs.create') }}"
           aria-expanded="false"
-        >+ Create New Project</a>
+        >+ Create New Blog</a>
       </div>
     </div>
     <div class="table-responsive">
@@ -21,17 +21,14 @@
                   <i class="input-helper"></i></label>
               </div>
             </th> --}}
-            <th> Thumbnail</th>
-            <th> Project Name </th>
-            <th> Category </th>
-            <th> The Best </th>
-            <th> Updated At </th>
+            <th> Title</th>
+            <th> Published</th>
+            <th> Published At </th>
             <th class="text-right"> Action </th>
-
           </tr>
         </thead>
         <tbody>
-          @foreach ($projects as $project)
+          @foreach ($blogs as $blog)
             <tr>
               {{-- <td>
                 <div class="form-check form-check-muted m-0">
@@ -40,46 +37,37 @@
                     <i class="input-helper"></i></label>
                 </div>
               </td> --}}
-              <td>
-                <img
-                  src="{{ asset($project->thumbnail) }}"
-                  alt="image"
-                  style="width:50px; height:50px;"
-                >
-              </td>
-              <td> {{ $project->name }} </td>
-              <td> {{ $project->category }}</td>
+              <td> {{ $blog->title }} </td>
 
               <td>
-                @if ($project->is_best)
+                @if ($blog->published)
                   <button class="btn btn-inverse-success" type="button">Yes</button>
                 @else
                   <button class="btn btn-inverse-danger" type="button">No</button>
                 @endif
               </td>
               <td>
-                {{ $project->updated_at->diffForHumans() }}
+                {{ $blog->getFormattedPublishedAt() }}
               </td>
               <td class="text-right">
                 <a
                   class="btn text-warning btn-icon-text"
                   type="button"
-                  href="{{ route('admin.project.edit', ['id' => $project->id]) }}"
+                  href="{{ route('admin.blogs.edit', ['id' => $blog->id]) }}"
                 > Edit
                   <i class="mdi mdi-pen btn-icon-append"></i>
                 </a>
                 <button
                   class="btn text-danger btn-icon-text delete-item"
                   type="button"
-                  wire:click="delete({{ $project->id }})"
-                  wire:confirm="Are you sure you want to delete this project?"
+                  wire:click="delete({{ $blog->id }})"
+                  wire:confirm="Are you sure you want to delete this blog?"
                 > Delete
                   <i class="mdi mdi-trash-can-outline btn-icon-append"></i>
                 </button>
               </td>
             </tr>
           @endforeach
-
         </tbody>
       </table>
     </div>
