@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->string('sub_title');
             $table->dateTime('published_at');
             $table->boolean('published')->default(false);
-            $table->text('content');
+            $table->longText('content');
             $table->timestamps();
         });
     }
