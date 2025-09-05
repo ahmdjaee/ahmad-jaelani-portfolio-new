@@ -1475,8 +1475,8 @@ section,
   background: color-mix(in srgb, var(--accent-color), transparent 20%);
 }
 
-pre {
+/* pre {
   background-color: rgb(32, 32, 32);
   padding: 20px 6px;
   border-radius: 10px;
-}
+} */

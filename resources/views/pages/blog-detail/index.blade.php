@@ -34,3 +34,14 @@
 
   </section><!-- /Service Details Section -->
 @endsection
+
+@push('bottom-scripts')
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/atom-one-dark.min.css"
+    rel="stylesheet"
+  >
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+
+  <script>
+    hljs.highlightAll();
+  </script>
+@endpush
