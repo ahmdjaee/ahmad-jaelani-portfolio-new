@@ -6,7 +6,8 @@
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
 
-      <img src="assets/img/image.png" alt="" data-aos="fade-in">
+      {{-- <img src="assets/img/image.png" alt="" data-aos="fade-in"> --}}
+      <div id="particles-js"></div>
 
       <div class="container" data-aos="zoom-out" data-aos-delay="100">
         <h2>Ahmad Jaelani</h2>
