@@ -80,17 +80,35 @@
 
 @push('bottom-script')
   <script>
-    const useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const isSmallScreen = window.matchMedia('(max-width: 1023.5px)').matches;
-
-    ['livewire:load', 'livewire:navigated', 'DOMContentLoaded'].forEach(evt =>
-      document.addEventListener(evt, function() {
-        initTinyContent();
-
-      }, false)
-    );
 
     function initTinyContent() {
+      console.log('initTinyContent called');
+      
+      // Cek apakah tinymce tersedia
+      if (typeof tinymce === 'undefined') {
+        console.error('TinyMCE not loaded!');
+        return;
+      }
+      
+      console.log('TinyMCE is available');
+
+      // Cek apakah element ada
+      const element = document.getElementById('content');
+      if (!element) {
+        console.error('Element #content not found!');
+        return;
+      }
+      
+      console.log('Element #content found');
+
+      // Hapus instance lama jika ada
+      if (tinymce.get('content')) {
+        console.log('Removing old TinyMCE instance');
+        tinymce.get('content').remove();
+      }
+
+      console.log('Initializing TinyMCE...');
+
       tinymce.init({
         selector: '#content',
         license_key: 'gpl',
@@ -104,17 +122,14 @@
         autosave_restore_when_empty: false,
         autosave_retention: '2m',
         image_advtab: true,
-
         importcss_append: true,
         file_picker_callback: (callback, value, meta) => {
-          /* Provide file and text for the link dialog */
           if (meta.filetype === 'file') {
             callback('https://www.google.com/logos/google.jpg', {
               text: 'My text'
             });
           }
 
-          /* Provide image and alt text for the image dialog */
           if (meta.filetype === 'image') {
             const input = document.createElement('input');
             input.setAttribute('type', 'file');
@@ -125,18 +140,12 @@
 
               const reader = new FileReader();
               reader.addEventListener('load', () => {
-                /*
-                  Note: Now we need to register the blob in TinyMCEs image blob
-                  registry. In the next release this part hopefully won't be
-                  necessary, as we are looking to handle it internally.
-                */
                 const id = 'blobid' + (new Date()).getTime();
                 const blobCache = tinymce.activeEditor.editorUpload.blobCache;
                 const base64 = reader.result.split(',')[1];
                 const blobInfo = blobCache.create(id, file, base64);
                 blobCache.add(blobInfo);
 
-                /* call the callback and populate the Title field with the file name */
                 callback(blobInfo.blobUri(), {
                   title: file.name
                 });
@@ -147,7 +156,6 @@
             input.click();
           }
 
-          /* Provide alternative source and posted for the media dialog */
           if (meta.filetype === 'media') {
             callback('movie.mp4', {
               source2: 'alt.ogg',
@@ -161,20 +169,45 @@
         noneditable_class: 'mceNonEditable',
         toolbar_mode: 'sliding',
         contextmenu: 'link image table',
-        skin: useDarkMode ? 'oxide-dark' : 'oxide',
-        content_css: useDarkMode ? 'dark' : 'default',
-        // content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }',
+        skin:'oxide-dark',
+        content_css:'dark' ,
         setup: function(editor) {
-          editor.on('init change', function() {
+          editor.on('init', function() {
+            console.log('TinyMCE initialized successfully!');
+          });
+          
+          editor.on('change', function() {
             editor.save();
           });
 
-          // This section says that when you leave the text edit area, it will set whatever livewire variable you like to the currnt contents
           editor.on('blur', function(e) {
             @this.set('form.content', editor.getContent());
           });
         },
       });
     }
+
+    // Untuk debugging - lihat event apa yang terpanggil
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('DOMContentLoaded fired');
+      setTimeout(() => initTinyContent(), 100);
+    });
+
+    document.addEventListener('livewire:navigated', function() {
+      console.log('livewire:navigated fired');
+      setTimeout(() => initTinyContent(), 100);
+    });
+
+    document.addEventListener('livewire:navigating', function() {
+      console.log('livewire:navigating fired');
+      if (tinymce.get('content')) {
+        tinymce.get('content').remove();
+      }
+    });
+
+    // Coba juga ini
+    window.addEventListener('load', function() {
+      console.log('window load fired');
+    });
   </script>
 @endpush

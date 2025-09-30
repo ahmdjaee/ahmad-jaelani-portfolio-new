@@ -7,6 +7,7 @@
           class="nav-link btn btn-success create-new-button"
           href="{{ route('admin.blogs.create') }}"
           aria-expanded="false"
+          wire:navigate
         >+ Create New Blog</a>
       </div>
     </div>
