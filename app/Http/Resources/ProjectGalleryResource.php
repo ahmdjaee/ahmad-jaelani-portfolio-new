@@ -11,7 +11,7 @@ class ProjectGalleryResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'imagePath' => asset($this->image_path),
+            'imagePath' => url($this->image_path),
             'caption' => $this->caption,
             'order' => $this->order,
         ];

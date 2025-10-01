@@ -15,7 +15,7 @@ class ProjectResource extends JsonResource
             'slug' => $this->slug,
             'description' => $this->description,
             'longDescription' => $this->long_description,
-            'image' => $this->image ? asset($this->image) : null,
+            'image' => $this->image ? url($this->image) : null,
             'tags' => ProjectTagResource::collection($this->whenLoaded('tags')),
             'year' => $this->year,
             'role' => $this->role,
