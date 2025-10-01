@@ -20,7 +20,9 @@ class FilamentProjectResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-briefcase';
 
-    protected static ?string $navigationGroup = 'Portfolio';
+    protected static ?string $navigationGroup = 'Project V2';
+
+    protected static ?string $label = 'Project';
 
     protected static ?int $navigationSort = 1;
 
@@ -224,8 +226,9 @@ class FilamentProjectResource extends Resource
                     ->badge()
                     ->separator(',')
                     ->color(fn ($record, $state) => 
-                        $record->tags->firstWhere('name', $state)?->color ?? 'gray'
-                    ),
+                        // $record->tags->firstWhere('name', $state)?->color ?? 'gray'
+                        'gray'
+                    )->limitList(3),
 
                 Tables\Columns\IconColumn::make('is_featured')
                     ->label('Featured')

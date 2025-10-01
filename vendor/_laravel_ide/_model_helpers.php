@@ -283,6 +283,23 @@ namespace App\Models {
     /**
      * App\Models\FilamentProject
      *
+     * @property \Illuminate\Support\Carbon|null $deleted_at
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property int $order
+     * @property boolean $is_published
+     * @property boolean $is_featured
+     * @property mixed $github_url
+     * @property mixed $live_url
+     * @property mixed $duration
+     * @property mixed $role
+     * @property integer $year
+     * @property mixed $image
+     * @property string $long_description
+     * @property mixed $description
+     * @property mixed $slug
+     * @property mixed $title
+     * @property int $id
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ProjectTag> $tags
      * @property-read int|null $tags_count
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ProjectFeature> $features
@@ -291,6 +308,23 @@ namespace App\Models {
      * @property-read int|null $challenges_count
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ProjectGallery> $gallery
      * @property-read int|null $gallery_count
+     * @method static \Illuminate\Database\Eloquent\Builder<FilamentProject>|FilamentProject whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<FilamentProject>|FilamentProject whereTitle($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<FilamentProject>|FilamentProject whereSlug($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<FilamentProject>|FilamentProject whereDescription($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<FilamentProject>|FilamentProject whereLongDescription($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<FilamentProject>|FilamentProject whereImage($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<FilamentProject>|FilamentProject whereYear($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<FilamentProject>|FilamentProject whereRole($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<FilamentProject>|FilamentProject whereDuration($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<FilamentProject>|FilamentProject whereLiveUrl($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<FilamentProject>|FilamentProject whereGithubUrl($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<FilamentProject>|FilamentProject whereIsFeatured($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<FilamentProject>|FilamentProject whereIsPublished($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<FilamentProject>|FilamentProject whereOrder($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<FilamentProject>|FilamentProject whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<FilamentProject>|FilamentProject whereUpdatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<FilamentProject>|FilamentProject whereDeletedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<FilamentProject>|FilamentProject newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<FilamentProject>|FilamentProject newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<FilamentProject>|FilamentProject query()
@@ -1103,7 +1137,19 @@ namespace App\Models {
     /**
      * App\Models\ProjectChallenge
      *
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property int $order
+     * @property mixed $challenge
+     * @property int $filament_project_id
+     * @property int $id
      * @property-read \App\Models\FilamentProject $project
+     * @method static \Illuminate\Database\Eloquent\Builder<ProjectChallenge>|ProjectChallenge whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProjectChallenge>|ProjectChallenge whereFilamentProjectId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProjectChallenge>|ProjectChallenge whereChallenge($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProjectChallenge>|ProjectChallenge whereOrder($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProjectChallenge>|ProjectChallenge whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProjectChallenge>|ProjectChallenge whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<ProjectChallenge>|ProjectChallenge newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<ProjectChallenge>|ProjectChallenge newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<ProjectChallenge>|ProjectChallenge query()
@@ -1364,7 +1410,19 @@ namespace App\Models {
     /**
      * App\Models\ProjectFeature
      *
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property int $order
+     * @property mixed $feature
+     * @property int $filament_project_id
+     * @property int $id
      * @property-read \App\Models\FilamentProject $project
+     * @method static \Illuminate\Database\Eloquent\Builder<ProjectFeature>|ProjectFeature whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProjectFeature>|ProjectFeature whereFilamentProjectId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProjectFeature>|ProjectFeature whereFeature($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProjectFeature>|ProjectFeature whereOrder($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProjectFeature>|ProjectFeature whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProjectFeature>|ProjectFeature whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<ProjectFeature>|ProjectFeature newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<ProjectFeature>|ProjectFeature newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<ProjectFeature>|ProjectFeature query()
@@ -1625,7 +1683,21 @@ namespace App\Models {
     /**
      * App\Models\ProjectGallery
      *
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property int $order
+     * @property mixed $caption
+     * @property mixed $image_path
+     * @property int $filament_project_id
+     * @property int $id
      * @property-read \App\Models\FilamentProject $project
+     * @method static \Illuminate\Database\Eloquent\Builder<ProjectGallery>|ProjectGallery whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProjectGallery>|ProjectGallery whereFilamentProjectId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProjectGallery>|ProjectGallery whereImagePath($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProjectGallery>|ProjectGallery whereCaption($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProjectGallery>|ProjectGallery whereOrder($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProjectGallery>|ProjectGallery whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProjectGallery>|ProjectGallery whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<ProjectGallery>|ProjectGallery newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<ProjectGallery>|ProjectGallery newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<ProjectGallery>|ProjectGallery query()
@@ -1886,8 +1958,20 @@ namespace App\Models {
     /**
      * App\Models\ProjectTag
      *
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property mixed $color
+     * @property mixed $slug
+     * @property mixed $name
+     * @property int $id
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\FilamentProject> $projects
      * @property-read int|null $projects_count
+     * @method static \Illuminate\Database\Eloquent\Builder<ProjectTag>|ProjectTag whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProjectTag>|ProjectTag whereName($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProjectTag>|ProjectTag whereSlug($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProjectTag>|ProjectTag whereColor($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProjectTag>|ProjectTag whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<ProjectTag>|ProjectTag whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<ProjectTag>|ProjectTag newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<ProjectTag>|ProjectTag newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<ProjectTag>|ProjectTag query()

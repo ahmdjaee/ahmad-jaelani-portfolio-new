@@ -17,7 +17,7 @@ class ProjectTagResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-tag';
 
-    protected static ?string $navigationGroup = 'Portfolio';
+    protected static ?string $navigationGroup = 'Project V2';
 
     protected static ?int $navigationSort = 2;
 
