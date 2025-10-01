@@ -60,6 +60,7 @@ Route::post('/send-email', [ContactController::class, 'sendEmail']);
 
 Route::get('/framework-optimize', function () {
     Artisan::call('optimize', );
+    Artisan::call('filament:optimize', );
 
     info('Optimize done!');
 
@@ -68,6 +69,7 @@ Route::get('/framework-optimize', function () {
 
 Route::get('/framework-optimize-clear', function () {
     Artisan::call('optimize:clear', );
+    Artisan::call('filament:optimize-clear', );
 
     info('Optimize clear done!');
 
