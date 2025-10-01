@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\BlogController;
 use App\Http\Controllers\Api\ProjectController;
 use App\Http\Controllers\Api\ProjectTagController;
 use Illuminate\Support\Facades\Route;
@@ -23,4 +24,11 @@ Route::prefix('projects')->group(function () {
 Route::prefix('tags')->group(function () {
     Route::get('/', [ProjectTagController::class, 'index']);
     Route::get('/{slug}', [ProjectTagController::class, 'show']);
+});
+
+
+// Projects
+Route::prefix('blogs')->group(function () {
+    Route::get('/', [BlogController::class, 'index']);
+    Route::get('/{identifier}', [BlogController::class, 'show']);
 });

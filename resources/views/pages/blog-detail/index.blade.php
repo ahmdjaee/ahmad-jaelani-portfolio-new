@@ -26,7 +26,7 @@
           <p>{{ $blog->sub_title }}</p>
           <p class="text-end text-secondary">{{ $blog->getFormattedPublishedAt() }}</p>
           <hr />
-          {!! $blog->content !!}
+         {!! str($blog->content)->markdown()->sanitizeHtml() !!}
         </div>
       </div>
 
