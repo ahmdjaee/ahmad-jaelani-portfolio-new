@@ -279,7 +279,8 @@ class FilamentProjectResource extends Resource
                     Tables\Actions\RestoreBulkAction::make(),
                 ]),
             ])
-            ->defaultSort('order', 'asc');
+            ->defaultSort('order', 'asc')
+            ->reorderable('order');
     }
 
     public static function getRelations(): array
