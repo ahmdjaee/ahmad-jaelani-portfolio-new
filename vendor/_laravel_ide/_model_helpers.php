@@ -2533,15 +2533,15 @@ namespace App\Models {
      * @method static \Illuminate\Database\Eloquent\Builder<Todo>|Todo whereTags($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Todo>|Todo whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Todo>|Todo whereUpdatedAt($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<Todo>|Todo overdue()
-     * @method static \Illuminate\Database\Eloquent\Builder<Todo>|Todo dueToday()
-     * @method static \Illuminate\Database\Eloquent\Builder<Todo>|Todo highPriority()
-     * @method static \Illuminate\Database\Eloquent\Builder<Todo>|Todo pending()
-     * @method static \Illuminate\Database\Eloquent\Builder<Todo>|Todo inProgress()
-     * @method static \Illuminate\Database\Eloquent\Builder<Todo>|Todo completed()
      * @method static \Illuminate\Database\Eloquent\Builder<Todo>|Todo newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<Todo>|Todo newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<Todo>|Todo query()
+     * @method static \Illuminate\Database\Eloquent\Builder<Todo>|Todo overdue() {@see App\Models\Todo::scopeOverdue()}
+     * @method static \Illuminate\Database\Eloquent\Builder<Todo>|Todo dueToday() {@see App\Models\Todo::scopeDueToday()}
+     * @method static \Illuminate\Database\Eloquent\Builder<Todo>|Todo highPriority() {@see App\Models\Todo::scopeHighPriority()}
+     * @method static \Illuminate\Database\Eloquent\Builder<Todo>|Todo pending() {@see App\Models\Todo::scopePending()}
+     * @method static \Illuminate\Database\Eloquent\Builder<Todo>|Todo inProgress() {@see App\Models\Todo::scopeInProgress()}
+     * @method static \Illuminate\Database\Eloquent\Builder<Todo>|Todo completed() {@see App\Models\Todo::scopeCompleted()}
      * @method static mixed select($columns)
      * @method static mixed selectSub($query, $as)
      * @method static mixed selectRaw($expression, array $bindings)
