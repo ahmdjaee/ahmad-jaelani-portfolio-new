@@ -17,7 +17,8 @@
       <div class="container">
         <ol>
           <li><a href="/">Home</a></li>
-          <li class="current">Portfolio Details</li>
+          <li><a href="/project">Project</a></li>
+          <li class="current">Details</li>
         </ol>
       </div>
     </nav>
@@ -56,7 +57,7 @@
             <div class="swiper-wrapper align-items-center">
               @foreach ($images as $image)
                 <div class="swiper-slide">
-                  <img style="max-height: 500px; object-fit: contain;" src={{ asset($image) }} alt="">
+                  <img style="max-height: 500px; object-fit: contain;" src={{ asset($image->url) }} alt="">
                 </div>
               @endforeach
             </div>

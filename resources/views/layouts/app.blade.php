@@ -35,7 +35,7 @@
   <!-- Main CSS File -->
   <link href={{ asset("assets/css/main.css") }} rel="stylesheet">
 
-  {{-- @vite(["resources/css/app.css", "resources/js/app.js"]) --}}
+  @vite(["resources/css/app.css", "resources/js/app.js"])
 
   <!-- =======================================================
   * Template Name: Personal
@@ -87,34 +87,36 @@
       </div>
     </header>
     @yield("content")
-    <footer class="footer dark-background" id="footer">
-      <div class="container">
-        <h3 class="sitename">Personal</h3>
-        <p>Visit my social media for more information about me. </p>
-        <div class="social-links d-flex justify-content-center">
-          <a href="https://github.com/"><i class="bi bi-github"></i></a>
-          <a href="https://www.facebook.com/ahmad.jailani.9822924/?locale=id_ID"><i
-              class="bi bi-facebook"
-            ></i></a>
-          <a href="https://www.instagram.com/jaee.eee_/"><i class="bi bi-instagram"></i></a>
-          <a href="https://wa.me/+6287735261470?text=Hello Ahmad Jaelani" target="_blank">
-            <i class="bi bi-whatsapp"></i></a>
-        </div>
+    @if (!request()->is('/'))
+      <footer class="footer dark-background" id="footer">
         <div class="container">
-          <div class="copyright">
-            <span>Copyright</span><strong class="px-1 sitename">Personal</strong>
-            <span>All Rights Reserved</span>
+          <h3 class="sitename">Personal</h3>
+          <p>Visit my social media for more information about me. </p>
+          <div class="social-links d-flex justify-content-center">
+            <a href="https://github.com/"><i class="bi bi-github"></i></a>
+            <a href="https://www.facebook.com/ahmad.jailani.9822924/?locale=id_ID"><i
+                class="bi bi-facebook"
+              ></i></a>
+            <a href="https://www.instagram.com/jaee.eee_/"><i class="bi bi-instagram"></i></a>
+            <a href="https://wa.me/+6287735261470?text=Hello Ahmad Jaelani" target="_blank">
+              <i class="bi bi-whatsapp"></i></a>
           </div>
-          <div class="credits">
-            <!-- All the links in the footer should remain intact. -->
-            <!-- You can delete the links only if you've purchased the pro version. -->
-            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-            <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-            Thanks to <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          <div class="container">
+            <div class="copyright">
+              <span>Copyright</span><strong class="px-1 sitename">Personal</strong>
+              <span>All Rights Reserved</span>
+            </div>
+            <div class="credits">
+              <!-- All the links in the footer should remain intact. -->
+              <!-- You can delete the links only if you've purchased the pro version. -->
+              <!-- Licensing information: https://bootstrapmade.com/license/ -->
+              <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+              Thanks to <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            </div>
           </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    @endif 
   </div>
 
   <!-- Scroll Top -->
@@ -141,6 +143,10 @@
 
   <!-- Main JS File -->
   <script src={{ asset("assets/js/main.js") }}></script>
+  <script src={{ asset("assets/js/particles.min.js") }}></script>
+  <script src={{ asset("assets/js/app.js") }}></script>
+
+  @stack('bottom-scripts')
 
 </body>
 

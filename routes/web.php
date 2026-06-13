@@ -1,8 +1,16 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
-use App\Mail\SendEmail;
-use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\ProjectController;
+use App\Livewire\Admin\Blog\Create as BlogCreate;
+use App\Livewire\Admin\Blog\Edit as BlogEdit;
+use App\Livewire\Admin\Blog\Index as BlogIndex;
+use App\Livewire\Admin\Project\Create;
+use App\Livewire\Admin\Project\Edit;
+use App\Livewire\Admin\Project\Index;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,26 +24,54 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', fn() => view('pages.index'));
-Route::get('/about', fn() => view('pages.about'));
-Route::get('/test', fn() => view('pages.test'));
-Route::get('/contact', fn() => view('pages.contact'));
-Route::get('/blog', fn() => view('pages.blog'));
-Route::get('/project', fn() => view('pages.project'));
-Route::get('/resume', fn() => view('pages.resume'));
+// Route::middleware('auth')->group(function () {
+//     Route::redirect('/admin-panel', '/admin-panel/project', 301);
+//     Route::get('/admin-panel/project', Index::class)->name('admin');
+//     Route::get('/admin-panel/project/create', Create::class)->name('admin.project.create');
+//     Route::get('/admin-panel/project/edit', Edit::class)->name('admin.project.edit');
 
-Route::prefix('project')->group(function () {
-    Route::get('/blog-app', fn() => view('pages.project-details.blog-app'));
-    Route::get('/larest-admin', fn() => view('pages.project-details.larest-admin'));
-    Route::get('/larest-v2', fn() => view('pages.project-details.larest-v2'));
-    Route::get('/larest-client', fn() => view('pages.project-details.larest-client'));
-    Route::get('/landing-page-nft', fn() => view('pages.project-details.landing-page-nft'));
-    Route::get('/login-management', fn() => view('pages.project-details.login-management'));
-    Route::get('/module-app', fn() => view('pages.project-details.module-app'));
-    Route::get('/irkaexpress', fn() => view('pages.project-details.irka-express'));
-    Route::get('/point-of-sale', fn() => view('pages.project-details.point-of-sale'));
-});
+//     Route::get('/admin-panel/blogs', BlogIndex::class)->name('admin.blogs');
+//     Route::get('/admin-panel/blogs/create', BlogCreate::class)->name('admin.blogs.create');
+//     Route::get('/admin-panel/blogs/edit', BlogEdit::class)->name('admin.blogs.edit');
+// });
 
-Route::get('admin', fn() => view('pages.admin-panel.index'));
+// Route::get('/admin-panel/login', [LoginController::class, 'index'])->name('login');
+// Route::post('/admin-panel/login', [LoginController::class, 'store'])->name('login.store');
+// Route::get('/admin-panel/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::post('/send-email', [ContactController::class, 'sendEmail']);
+
+
+// Route::get('/', fn() => view('pages.index'));
+// Route::get('/about', fn() => view('pages.about'));
+// // Route::get('/test', fn() => view('pages.test'));
+// Route::get('/contact', fn() => view('pages.contact'));
+// Route::get('/blog', fn() => view('pages.blog'));
+// Route::get('/resume', fn() => view('pages.resume'));
+
+
+// Route::get('/project', [ProjectController::class, 'index'])->name('project.index');
+// Route::get('/project/{id}', [ProjectController::class, 'show'])->name('project.show');
+
+// Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+// Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+
+
+// Route::post('/send-email', [ContactController::class, 'sendEmail']);
+
+// Route::get('/framework-optimize', function () {
+//     Artisan::call('optimize', );
+//     Artisan::call('icons:cache', );
+
+//     info('Optimize done!');
+
+//     return redirect(route('project.index'));
+// });
+
+// Route::get('/framework-optimize-clear', function () {
+//     Artisan::call('optimize:clear', );
+//     Artisan::call('filament:optimize-clear', );
+
+//     info('Optimize clear done!');
+
+//     return redirect(route('project.index'));
+// });

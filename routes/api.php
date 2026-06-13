@@ -1,19 +1,34 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\BlogController;
+use App\Http\Controllers\Api\ProjectController;
+use App\Http\Controllers\Api\ProjectTagController;
 use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| API Routes
+| API Routes - Projects
 |--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Projects
+Route::prefix('projects')->group(function () {
+    Route::get('/', [ProjectController::class, 'index']);
+    Route::get('/featured', [ProjectController::class, 'featured']);
+    Route::get('/year/{year}', [ProjectController::class, 'byYear']);
+    Route::get('/tag/{tag}', [ProjectController::class, 'byTag']);
+    Route::get('/{identifier}', [ProjectController::class, 'show']);
+});
+
+// Tags
+Route::prefix('tags')->group(function () {
+    Route::get('/', [ProjectTagController::class, 'index']);
+    Route::get('/{slug}', [ProjectTagController::class, 'show']);
+});
+
+
+// Projects
+Route::prefix('blogs')->group(function () {
+    Route::get('/', [BlogController::class, 'index']);
+    Route::get('/{identifier}', [BlogController::class, 'show']);
 });

@@ -1,1 +1,3 @@
 import './bootstrap';
+
+import '/node_modules/tinymce/tinymce.min.js'
